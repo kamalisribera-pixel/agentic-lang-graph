@@ -20,5 +20,9 @@ jobs:
           username: ${{ secrets.ACR_USERNAME }}
           password: ${{ secrets.ACR_PASSWORD }}
 
-      - name: Build Docker Image
-        run: docker build -t agentic-lang-graph .
+      - name: Build and Push Docker Image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: true
+          tags: acrpracticing.azurecr.io/agentic-lang-graph:v3
